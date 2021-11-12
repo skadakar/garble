@@ -1,4 +1,13 @@
-# Numberstation
-Simplified numberstation cobbled together with ducttape and string
+# GARBLE
+
+Numberstation supporting PSK and OTP based data encryption over radio.
 
 
+```
+   _____ _   _ ______ _  ____          ________ _____  _  __ _____ 
+  / ____| \ | |  ____| |/ /\ \        / /  ____|  __ \| |/ // ____|
+ | (___ |  \| | |__  | ' /  \ \  /\  / /| |__  | |__) | ' /| (___  
+  \___ \| . ` |  __| |  <    \ \/  \/ / |  __| |  _  /|  <  \___ \ 
+  ____) | |\  | |____| . \    \  /\  /  | |____| | \ \| . \ ____) |
+ |_____/|_| \_|______|_|\_\    \/  \/   |______|_|  \_\_|\_\_____/ 
+```
