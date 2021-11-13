@@ -17,6 +17,8 @@ Numberstation supporting PSK and OTP based data encryption over radio.
    ```
    python .\otp_sendmsg.py --otp 123456  --prefix "12345" --msg "asd"
    ```
+   Decoding guide:
+   
    ![alt text](https://github.com/skadakar/garble/blob/main/otp-manual.png?raw=true)
    
 
