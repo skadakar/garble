@@ -41,12 +41,17 @@ def sendmessage(pskkey, msgcontent):
     print("Starting intro")
     introfullpath = os.path.abspath('audio/pskintro.mp3')
     AudioPlayer(introfullpath).play(block=True)
-    #playsound(introfullpath, block = False)
+
     time.sleep(0.1)
     print("Encrypted key transfer")
-    for i in encryptedtovo:
-        numfullpath = os.path.abspath('vo/' + i + '.mp3')
+    for i, symbol in enumerate(encryptedtovo):
+        numfullpath = os.path.abspath('vo/' + symbol + '.mp3')
         AudioPlayer(numfullpath).play(block=True)
+        # This gives us a 0.75 second break every five character.
+        i= i+1
+        if i % 5 == 0: print("Five break")
+        if i % 5 == 0: time.sleep(1.25)
+
     # Distinct break before code runs again slower
     time.sleep(0.1)
     print("Break")
@@ -54,9 +59,13 @@ def sendmessage(pskkey, msgcontent):
     AudioPlayer(midfullpath).play(block=True)
 
     print("Encrypted key transfer 80% speed")
-    for s in encryptedtovo:
-        slownumfullpath = os.path.abspath('vo-slow/' + s + '.mp3')
-        AudioPlayer(slownumfullpath).play(block=True)
+    for i, symbol in enumerate(encryptedtovo):
+        numfullpath = os.path.abspath('vo-slow/' + symbol + '.mp3')
+        AudioPlayer(numfullpath).play(block=True)
+        #This gives us a 0.75 second break every five character.
+        i = i + 1
+        if i % 5 == 0: print("Five break")
+        if i % 5 == 0: time.sleep(1.25)
 
     time.sleep(0.1)
 
