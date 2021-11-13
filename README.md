@@ -26,8 +26,11 @@ Numberstation supporting PSK and OTP based data encryption over radio.
    ```
    
 # Video examples   
-   https://www.youtube.com/watch?v=2DjWeM7rUh4
-   https://www.youtube.com/watch?v=z63h6zclol0
+   
+   PSK: https://www.youtube.com/watch?v=2DjWeM7rUh4
+   
+   
+   OTP: https://www.youtube.com/watch?v=z63h6zclol0
    
    
    
