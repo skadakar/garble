@@ -1,7 +1,7 @@
 # GARBLE
 
 Numberstation supporting PSK and OTP based data encryption over radio with speech synthisized audio.
-Not true random, cannot be trusted for anything outside of fun and games. 
+\nNot true random, cannot be trusted for anything outside of fun and games. 
 
 
 | Script | Function | Variables
