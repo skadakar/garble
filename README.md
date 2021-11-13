@@ -10,20 +10,23 @@ Numberstation supporting PSK and OTP based data encryption over radio.
 |otp_sendmsg.py| Sends a message encrypted with selected OTP| --prefix <if you want to prefix your message with something, replace with "_" to not have one> --otp <otp to be used for encryption>  --msg <The message you want to send, a-z>
    
    
-OTP Examples:
+# OTP Examples:
    ``` 
    python .\otp_sendmsg.py --otp 123456  --prefix "_" --msg "asd"
    ```
    ```
    python .\otp_sendmsg.py --otp 123456  --prefix "12345" --msg "asd"
    ```
-   https://www.youtube.com/watch?v=2DjWeM7rUh4
+   
 
    
-PSK Examples:
+# PSK Examples:
    ```
    python .\psk_sendmsg.py --psk 30848 --msg "This is a test string"
    ```
+   
+# Video examples   
+   https://www.youtube.com/watch?v=2DjWeM7rUh4
    https://www.youtube.com/watch?v=z63h6zclol0
    
    
