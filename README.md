@@ -13,14 +13,13 @@ Numberstation supporting PSK and OTP based data encryption over radio.
 OTP Examples:
    ``` 
    python .\otp_sendmsg.py --otp 123456  --prefix "_" --msg "asd"
- ```
+   ```
    ```
    python .\otp_sendmsg.py --otp 123456  --prefix "12345" --msg "asd"
- ```
+   ```
 PSK Examples:
    ```
    python .\psk_sendmsg.py --psk 30848 --msg "This is a test string"
-
    ```
    
    
