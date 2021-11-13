@@ -18,6 +18,8 @@ OTP Examples:
    python .\otp_sendmsg.py --otp 123456  --prefix "12345" --msg "asd"
    ```
    https://www.youtube.com/watch?v=2DjWeM7rUh4
+
+   
 PSK Examples:
    ```
    python .\psk_sendmsg.py --psk 30848 --msg "This is a test string"
