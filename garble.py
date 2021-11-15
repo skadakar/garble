@@ -1,13 +1,36 @@
-import sys
 import json
 import os
 import random
 import re
 import string
+import sys
 import time
 
 import numpy as np
 from audioplayer import AudioPlayer
+
+
+def help():
+    print("See docs: https://github.com/skadakar/garble")
+    print("Usage:")
+    print("--send \"message here\"  --otp \"name of otp\" --prefix \"prefix numbers\"")
+    print("--send \"message here\"  --psk \"name of otp\" --prefix \"prefix numbers\"")
+    print("Example:")
+    print("python garble.py --send \"This is my message\" --otp \"003\" --prefix \"1003\"")
+    print("Note: Max 5 numbers in prefix")
+    print("")
+    print("To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.")
+    print("--keygen --otp")
+    print("--keygen --psk")
+    print("")
+    print("   _____ _   _ ______ _  ____          ________ _____  _  __ _____")
+    print("  / ____| \ | |  ____| |/ /\ \        / /  ____|  __ \| |/ // ____|")
+    print(" | (___ |  \| | |__  | ' /  \ \  /\  / /| |__  | |__) | ' /| (___")
+    print("  \___ \| . ` |  __| |  <    \ \/  \/ / |  __| |  _  /|  <  \___ \\")
+    print("  ____) | |\  | |____| . \    \  /\  /  | |____| | \ \| . \ ____) |")
+    print(" |_____/|_| \_|______|_|\_\    \/  \/   |______|_|  \_\_|\_\_____/ ")
+    print("")
+    return
 
 
 def wait():
@@ -244,37 +267,7 @@ def send_psk_message(psk_key, message, prefix="_"):
     return
 
 
-
-
-#send_otp_message("000", "sommartider")
-#send_psk_message("000","sommartider",)
-#send_otp_message("000", "sommartider","222")
-#send_psk_message("000","sommartider","333")
-
-
-#Garbage controls goes here!
-
-def help():
-    print("See docs: https://github.com/skadakar/garble")
-    print("Usage:")
-    print("--send \"message here\"  --otp \" --OTP \"name of otp\" --prefix \"prefix numbers\"")
-    print("--send \"message here\"  --psk \" --psk \"name of otp\" --prefix \"prefix numbers\"")
-    print("Example:")
-    print("python garble.py --send \"This is my message\" --otp \"003\" --prefix \"1003\"")
-    print("Note: Max 5 numbers in prefix")
-    print("")
-    print("To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.")
-    print("--keygen --otp")
-    print("--keygen --psk")
-    print("")
-    print("   _____ _   _ ______ _  ____          ________ _____  _  __ _____")
-    print("  / ____| \ | |  ____| |/ /\ \        / /  ____|  __ \| |/ // ____|")
-    print(" | (___ |  \| | |__  | ' /  \ \  /\  / /| |__  | |__) | ' /| (___")
-    print("  \___ \| . ` |  __| |  <    \ \/  \/ / |  __| |  _  /|  <  \___ \\")
-    print("  ____) | |\  | |____| . \    \  /\  /  | |____| | \ \| . \ ____) |")
-    print(" |_____/|_| \_|______|_|\_\    \/  \/   |______|_|  \_\_|\_\_____/ ")
-    print("")
-    return
+# Garbage controls goes here!
 
 
 sysarglength = len(sys.argv)
@@ -299,14 +292,14 @@ if sys.argv[1] == str("--keygen"):
 if sys.argv[1] == str("--send"):
     if sys.argv[3] == str("--psk"):
         if sys.argv[3] == str("--prefix"):
-            send_psk_message(sys.argv[2],sys.argv[4],sys.argv[6])
+            send_psk_message(sys.argv[2], sys.argv[4], sys.argv[6])
             exit(0)
         else:
             send_psk_message(sys.argv[2], sys.argv[4])
             exit(0)
     if sys.argv[3] == str("--otp"):
         if sys.argv[3] == str("--prefix"):
-            send_otp_message(sys.argv[2],sys.argv[4],sys.argv[6])
+            send_otp_message(sys.argv[2], sys.argv[4], sys.argv[6])
             exit(0)
         else:
             send_otp_message(sys.argv[2], sys.argv[4])
@@ -319,5 +312,3 @@ if sysarglength <= 3:
 if sys.argv[1] == str("--help"):
     help()
     exit(0)
-
-
