@@ -4,7 +4,7 @@ Numberstation supporting PSK and OTP based data encryption over radio with speec
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
-# Usage:  
+## Usage  
 ```
 --send "message here"  --otp " --OTP "name of otp" --prefix "prefix numbers"  
 ```
