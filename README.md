@@ -4,20 +4,26 @@ Numberstation supporting PSK and OTP based data encryption over radio with speec
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
-Usage:  
+# Usage:  
+```
 --send "message here"  --otp " --OTP "name of otp" --prefix "prefix numbers"  
+```
+```
 --send "message here"  --psk " --psk "name of otp" --prefix "prefix numbers"  
-
+```
 
   
-To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.  
+## To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.  
+```
 --keygen --otp  
+```
+```
 --keygen --psk  
-  
+```  
 
    
    
-# OTP Examples:
+## OTP Examples:
    ``` 
    python garble.py --send "This is my message" --otp "003" --prefix "1003"  
    ```
@@ -30,7 +36,7 @@ To generate new keys use keygen, note that this will overwrite existing keys def
    
 
    
-# PSK Examples:
+## PSK Examples:
    ```
    python garble.py --send "This is my message" --psk "003" --prefix "1003"  
    ```
@@ -38,7 +44,7 @@ To generate new keys use keygen, note that this will overwrite existing keys def
    python garble.py --send "This is my message" --psk "003"
    ```
    
-# Video examples   
+## Video examples   
    
    OTP: https://www.youtube.com/watch?v=2DjWeM7rUh4
    
