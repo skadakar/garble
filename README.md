@@ -1,15 +1,21 @@
 # GARBLE
 
 Numberstation supporting PSK and OTP based data encryption over radio with speech synthesized audio.  
+You have the option to add prefix to your encoded message, to let people know what PSK or OTP is being used by setting the --prefix variable.
+
+
+OTP is limited to "abcdefghijklmnopqrstuvwxyz"  
+PSK is limited to <abcdefghijklmnopqrstuvwxyz0123456789 ,.-!>  
+  
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
 ## Usage  
 ```
---send "message here"  --otp " --OTP "name of otp" --prefix "prefix numbers"  
+--send "thistext"  --otp "name of otp" --prefix "prefix numbers"  
 ```
 ```
---send "message here"  --psk " --psk "name of otp" --prefix "prefix numbers"  
+--send "thistext"  --psk "name of psk" --prefix "prefix numbers"  
 ```
 
   
@@ -25,10 +31,10 @@ Not true random, cannot be trusted for anything outside of fun and games.
    
 ## OTP Examples:
    ``` 
-   python garble.py --send "This is my message" --otp "003" --prefix "1003"  
+   python garble.py --send "thisismymessage" --otp "003" --prefix "1003"  
    ```
    ```
-   python garble.py --send "This is my message" --otp "003"
+   python garble.py --send "thisismymessage" --otp "003"
    ```
    Decoding guide:
    
@@ -38,10 +44,10 @@ Not true random, cannot be trusted for anything outside of fun and games.
    
 ## PSK Examples:
    ```
-   python garble.py --send "This is my message" --psk "003" --prefix "1003"  
+   python garble.py --send "this is my message!" --psk "003" --prefix "1003"  
    ```
    ```
-   python garble.py --send "This is my message" --psk "003"
+   python garble.py --send "This is my message!" --psk "003"
    ```
    
 ## Video examples   
