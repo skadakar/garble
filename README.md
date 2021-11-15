@@ -4,21 +4,25 @@ Numberstation supporting PSK and OTP based data encryption over radio with speec
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
-| Script | Function | Variables
-|---|---|---|
-|otp_keygen.py|Creates new OTPs based on the /config/otp_keynames.txt| 
-|otp_sendmsg.py| Sends a message encrypted with selected OTP| --prefix <if you want to prefix your message with something, replace with "_" to not have one> --otp <otp to be used for encryption>  --msg <The message you want to send, a-z>
-|psk_sendmsg.py|Sends a message with the selected key| --psk <your selected key> --msg <"Your text here">|
-|psk_keygen.py|Creates new keys and dictionaries based on the /config/psk_keynames.txt |
+Usage:  
+--send "message here"  --otp " --OTP "name of otp" --prefix "prefix numbers"  
+--send "message here"  --psk " --psk "name of otp" --prefix "prefix numbers"  
+
+
+  
+To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.  
+--keygen --otp  
+--keygen --psk  
+  
 
    
    
 # OTP Examples:
    ``` 
-   python .\otp_sendmsg.py --otp 123456  --prefix "_" --msg "asd"
+   python garble.py --send "This is my message" --otp "003" --prefix "1003"  
    ```
    ```
-   python .\otp_sendmsg.py --otp 123456  --prefix "12345" --msg "asd"
+   python garble.py --send "This is my message" --otp "003"
    ```
    Decoding guide:
    
@@ -28,7 +32,10 @@ Not true random, cannot be trusted for anything outside of fun and games.
    
 # PSK Examples:
    ```
-   python .\psk_sendmsg.py --psk 30848 --msg "This is a test string"
+   python garble.py --send "This is my message" --psk "003" --prefix "1003"  
+   ```
+   ```
+   python garble.py --send "This is my message" --psk "003"
    ```
    
 # Video examples   
