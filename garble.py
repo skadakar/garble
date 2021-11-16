@@ -308,7 +308,3 @@ if sys.argv[1] == str("--send"):
 if sysarglength <= 3:
     help()
     exit(0)
-
-if sys.argv[1] == str("--help"):
-    help()
-    exit(0)
