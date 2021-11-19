@@ -245,7 +245,7 @@ def send_otp_message(message, otp_key, prefix="_"):
     return
 
 
-def send_psk_message(message, psk_key, prefix="_"):
+def send_psk_message(message,psk_key, prefix="_"):
     # Play intro
     play("audio", "pskintro")
     wait()
@@ -306,5 +306,9 @@ if sys.argv[1] == str("--send"):
         exit(0)
 
 if sysarglength <= 3:
+    help()
+    exit(0)
+
+if sys.argv[1] == str("--help"):
     help()
     exit(0)
