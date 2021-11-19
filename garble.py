@@ -205,7 +205,8 @@ def rotate_psk():
         generate_psk(name)
     print("All PSKs replaced")
 
-
+#Generick fuckery
+prefix= None
 # OTP EN Specific variables, RU might be something for the future.
 otpcharacterlist = single_split(string.ascii_lowercase)
 otpvalidnumbers = list(range(0, len(otpcharacterlist)))
@@ -223,9 +224,9 @@ pskalphanumlen = pskcharacterlist.__len__()
 # send_otp_message
 # send_psk_message
 
-def send_otp_message(message, otp_key, prefix="_"):
+def send_otp_message(message, otp_key, prefix):
     # Play intro
-    play("audio", "otpintro")
+    #play("audio", "otpintro")
     wait()
     # Play prefix
     playstring("vo", prefix_to_list(prefix))
@@ -268,8 +269,25 @@ def send_psk_message(message,psk_key, prefix="_"):
 
 
 # Garbage controls goes here!
+print(sys.argv[2])
+print(sys.argv[4])
+print(sys.argv[6])
 
-
+if sys.argv[1] == str("--send"):
+    if sys.argv[3] == str("--psk"):
+        if sys.argv[5] == str("--prefix"):
+            send_psk_message(sys.argv[2], sys.argv[4], sys.argv[6])
+            exit(0)
+        else:
+            send_psk_message(sys.argv[2], sys.argv[4])
+            exit(0)
+    if sys.argv[3] == str("--otp"):
+        if sys.argv[5] == str("--prefix"):
+            send_otp_message(sys.argv[2], sys.argv[4], sys.argv[6])
+            exit(0)
+        else:
+            send_otp_message(sys.argv[2], sys.argv[4])
+        exit(0)
 sysarglength = len(sys.argv)
 if sys.argv[1] == str("--keygen"):
     if sys.argv[2] == str("--otp"):
@@ -289,21 +307,6 @@ if sys.argv[1] == str("--keygen"):
         exit()
     exit(0)
 
-if sys.argv[1] == str("--send"):
-    if sys.argv[3] == str("--psk"):
-        if sys.argv[3] == str("--prefix"):
-            send_psk_message(sys.argv[2], sys.argv[4], sys.argv[6])
-            exit(0)
-        else:
-            send_psk_message(sys.argv[2], sys.argv[4])
-            exit(0)
-    if sys.argv[3] == str("--otp"):
-        if sys.argv[3] == str("--prefix"):
-            send_otp_message(sys.argv[2], sys.argv[4], sys.argv[6])
-            exit(0)
-        else:
-            send_otp_message(sys.argv[2], sys.argv[4])
-        exit(0)
 
 if sysarglength <= 3:
     help()
