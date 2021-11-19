@@ -301,14 +301,14 @@ if sys.argv[1] == str("--keygen"):
 if sys.argv[1] == str("--keygen"):
     if sys.argv[2] == str("--otp"):
         rotate_otp_keys()
-        exit()
+        exit(0)
     if sys.argv[2] == str("--psk"):
         rotate_psk()
         exit()
     exit(0)
 
 
-if sysarglength <= 3:
+if sysarglength <= 2:
     help()
     exit(0)
 
