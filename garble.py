@@ -87,6 +87,7 @@ def play(path: str, sound: str):
 def playstring(path: str, string: str):
     print("Playing sounds in increments of five.")
     for i, character in enumerate(string):
+        print(character)
         play(path, character)
         i = i + 1
         if i % 5 == 0:
