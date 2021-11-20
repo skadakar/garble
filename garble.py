@@ -10,7 +10,7 @@ import numpy as np
 from audioplayer import AudioPlayer
 
 
-def help():
+def garble_help():
     print("See docs: https://github.com/skadakar/garble")
     print("Usage:")
     print("--send \"message here\"  --otp \"name of otp\" --prefix \"prefix numbers\"")
@@ -206,8 +206,30 @@ def rotate_psk():
         generate_psk(name)
     print("All PSKs replaced")
 
-#Generick fuckery
-prefix= None
+def rotencodechar(char,rotlevel):
+
+    #Flyttet inn i rot13encodechar siden det ikke trenger være global
+    upper = [*string.ascii_uppercase]
+    lower = [*string.ascii_lowercase]
+
+    if char in upper:
+        charshift =  ((upper.index(char)) + int(rotlevel)) % len(upper)
+        newchar = upper[charshift]
+        return newchar
+    if char in lower:
+        charshift =  ((lower.index(char)) + int(rotlevel)) % len(lower)
+        newchar = lower[charshift]
+        return newchar
+    else:
+        return char
+
+
+def rot(rotlevel,string):
+    finalstring =""
+    for char in string:
+        finalstring += (rotencodechar(char, rotlevel))
+    return finalstring
+
 # OTP EN Specific variables, RU might be something for the future.
 otpcharacterlist = single_split(string.ascii_lowercase)
 otpvalidnumbers = list(range(0, len(otpcharacterlist)))
@@ -219,7 +241,7 @@ pskcharacterlist = single_split(string.ascii_lowercase + "0123456789,.-! ")
 pskvalidnumbers = list(range(10, 100))
 pskalphanumlen = pskcharacterlist.__len__()
 
-
+prefix=None
 # rotate_psk()
 # rotate_otp_keys
 # send_otp_message
@@ -268,13 +290,44 @@ def send_psk_message(message,psk_key, prefix="_"):
     play("audio", "pskend")
     return
 
+def send_rot_message(message,rot_num, prefix="_"):
+    # Play intro
+    play("audio", "rotintro")
+    wait()
+    # Play prefix
+    playstring("vaz09", prefix_to_list(prefix))
+    wait()
+    # Play message
+    tmpstr = rot(rot_num,message)
+    playstring("vaz09", tmpstr)
+    wait()
+    # Play pause music
+    play("audio", "rotmid")
+    # Re-play prefix
+    playstring("vaz09", prefix_to_list(prefix))
+    wait()
+    # Re-play message
+    playstring("vaz09", rot(rot_num, message))
+    # Play exit
+    play("audio", "rotend")
+    return
 
-# Garbage controls goes here!
-print(sys.argv[2])
-print(sys.argv[4])
-print(sys.argv[6])
+#tmpstr = rot(13,"hei")
+#playstring("vaz09", tmpstr)
+#send_rot_message("hei",13)
+sysarglength = len(sys.argv)
+print(sysarglength)
+
 
 if sys.argv[1] == str("--send"):
+    if sys.argv[3] == str("--rot"):
+        if len(sys.argv) > 5:
+            print(len(sys.argv))
+            send_rot_message(sys.argv[2], sys.argv[4], sys.argv[6])
+            exit(0)
+        else:
+            send_rot_message(sys.argv[2], sys.argv[4])
+            exit(0)
     if sys.argv[3] == str("--psk"):
         if sys.argv[5] == str("--prefix"):
             send_psk_message(sys.argv[2], sys.argv[4], sys.argv[6])
@@ -289,7 +342,7 @@ if sys.argv[1] == str("--send"):
         else:
             send_otp_message(sys.argv[2], sys.argv[4])
         exit(0)
-sysarglength = len(sys.argv)
+
 if sys.argv[1] == str("--keygen"):
     if sys.argv[2] == str("--otp"):
         rotate_otp_keys()
@@ -310,9 +363,10 @@ if sys.argv[1] == str("--keygen"):
 
 
 if sysarglength <= 2:
-    help()
+    garble_help()
     exit(0)
 
 if sys.argv[1] == str("--help"):
-    help()
+    garble_help()
     exit(0)
+
