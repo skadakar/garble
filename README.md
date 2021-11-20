@@ -4,9 +4,9 @@ Numberstation supporting PSK and OTP based data encryption over radio with speec
 You have the option to add prefix to your encoded message, to let people know what PSK or OTP is being used by setting the --prefix variable.
 
 
-OTP is limited to <abcdefghijklmnopqrstuvwxyz>  
-PSK is limited to <abcdefghijklmnopqrstuvwxyz0123456789 ,.-!>  
-ROT is limited to <abcdefghijklmnopqrstuvwxyz0123456789>  
+OTP is limited to "abcdefghijklmnopqrstuvwxyz"  
+PSK is limited to "abcdefghijklmnopqrstuvwxyz0123456789 ,.-!"  
+ROT is limited to "abcdefghijklmnopqrstuvwxyz0123456789"  
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
