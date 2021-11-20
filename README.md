@@ -3,15 +3,16 @@
 Numberstation supporting PSK and OTP based data encryption over radio with speech synthesized audio.  
 You have the option to add prefix to your encoded message, to let people know what PSK or OTP is being used by setting the --prefix variable.
 
+### Autoplaylist:  
+Will run a random command from /config/playlist.txt at a random interval between 3-21 minutes. 
 
+### Encryptions:
 OTP is limited to "abcdefghijklmnopqrstuvwxyz"  
 PSK is limited to "abcdefghijklmnopqrstuvwxyz0123456789 ,.-!"  
 ROT is limited to "abcdefghijklmnopqrstuvwxyz0123456789"  
 
-Autoplaylist: Will run a random command from /config/playlist.txt at a random interval between 3-21 minutes. 
-
 Not true random, cannot be trusted for anything outside of fun and games. 
-
+  
 
 ## Usage  
 ```
