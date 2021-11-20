@@ -7,6 +7,9 @@ You have the option to add prefix to your encoded message, to let people know wh
 OTP is limited to "abcdefghijklmnopqrstuvwxyz"  
 PSK is limited to "abcdefghijklmnopqrstuvwxyz0123456789 ,.-!"  
 ROT is limited to "abcdefghijklmnopqrstuvwxyz0123456789"  
+
+Also supports --autoplaylist which will run a random commands found in /config/playlist.txt every random intervals between 3 and 21 minutes until manually shut down.
+
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
