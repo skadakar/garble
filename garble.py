@@ -152,7 +152,9 @@ def ingest_psk(name):
 
 
 def prefix_to_list(prefixtext: str):
+    prefixtext = str.strip(prefixtext)
     prefixtextlist = single_split(prefixtext)
+
     return prefixtextlist
 
 
@@ -320,7 +322,7 @@ def send_rot_message(message,rot_num, prefix="_"):
     return
 
 def autoplaylist():
-    waittime = list(range(3, 21))
+    waittime = list(range(3, 17 ))
     commands = ingest_playlist()
     options=list(range(0, commands.__len__()))
     on = True
@@ -332,7 +334,7 @@ def autoplaylist():
         print(commandcall)
         time.sleep(thiswait[0] * 60)
         subprocess.call(commandcall)
-
+        print("Done, starting over.")
 #tmpstr = rot(13,"hei")
 #playstring("vaz09", tmpstr)
 #send_rot_message("hei",13)
