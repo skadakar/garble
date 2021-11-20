@@ -4,9 +4,9 @@ Numberstation supporting PSK and OTP based data encryption over radio with speec
 You have the option to add prefix to your encoded message, to let people know what PSK or OTP is being used by setting the --prefix variable.
 
 
-OTP is limited to "abcdefghijklmnopqrstuvwxyz"  
+OTP is limited to <abcdefghijklmnopqrstuvwxyz>  
 PSK is limited to <abcdefghijklmnopqrstuvwxyz0123456789 ,.-!>  
-  
+ROT is limited to <abcdefghijklmnopqrstuvwxyz0123456789>  
 Not true random, cannot be trusted for anything outside of fun and games. 
 
 
@@ -17,7 +17,9 @@ Not true random, cannot be trusted for anything outside of fun and games.
 ```
 --send "thistext"  --psk "name of psk" --prefix "prefix numbers"  
 ```
-
+```
+--send "thistext"  --rot <number> --prefix "prefix numbers"  
+```
   
 ## To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.  
 ```
@@ -49,7 +51,14 @@ Not true random, cannot be trusted for anything outside of fun and games.
    ```
    python garble.py --send "This is my message!" --psk "003"
    ```
-   
+## ROT Examples: 
+  ``` 
+   python garble.py --send "thisismymessage" --rot 13 --prefix "rot13"  
+   ```
+   ```
+   python garble.py --send "thisismymessage" --rot 13
+   ```   
+  
 ## Video examples   
    
    OTP: https://www.youtube.com/watch?v=2DjWeM7rUh4
