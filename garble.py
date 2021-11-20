@@ -322,7 +322,7 @@ def send_rot_message(message,rot_num, prefix="_"):
     return
 
 def autoplaylist():
-    waittime = list(range(3, 17 ))
+    waittime = list(range(3, 12 ))
     commands = ingest_playlist()
     options=list(range(0, commands.__len__()))
     on = True
