@@ -1,0 +1,5 @@
+python .\garble.py --send "thistext" --otp "000" --prefix "28472"
+python .\garble.py --send "thistext" --psk "000" --prefix "000"
+python .\garble.py --send "thistext" --psk "000" --prefix "000"
+python .\garble.py --send "thistext" --psk "000" --prefix "000"
+python .\garble.py --send "rotationisnotsecurity" --rot 13 --prefix "rot13"

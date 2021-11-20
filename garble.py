@@ -1,3 +1,4 @@
+import subprocess
 import json
 import os
 import random
@@ -136,6 +137,12 @@ def generate_otp(keyname: str):
     for line in otpcontent.splitlines():
         file.write(line + "\n")
     return
+
+
+def ingest_playlist():
+    my_file = open("config/playlist.txt", "r")
+    content_list = my_file.readlines()
+    return content_list
 
 
 def ingest_psk(name):
@@ -312,6 +319,20 @@ def send_rot_message(message,rot_num, prefix="_"):
     play("audio", "rotend")
     return
 
+def autoplaylist():
+    waittime = list(range(3, 21))
+    commands = ingest_playlist()
+    options=list(range(0, commands.__len__()))
+    on = True
+    while on == True:
+        thiswait = (random.sample(waittime, 1))
+        nexttask = (random.sample(options, 1))
+        commandcall = commands[nexttask[0]]
+        print("Waiting for " + str(thiswait[0]) + " minutes before doing:")
+        print(commandcall)
+        time.sleep(thiswait[0] * 60)
+        subprocess.call(commandcall)
+
 #tmpstr = rot(13,"hei")
 #playstring("vaz09", tmpstr)
 #send_rot_message("hei",13)
@@ -360,7 +381,8 @@ if sys.argv[1] == str("--keygen"):
         rotate_psk()
         exit()
     exit(0)
-
+if sys.argv[1] == str("--autoplaylist"):
+    autoplaylist()
 
 if sysarglength <= 2:
     garble_help()
