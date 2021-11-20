@@ -316,7 +316,7 @@ def send_rot_message(message,rot_num, prefix="_"):
 #playstring("vaz09", tmpstr)
 #send_rot_message("hei",13)
 sysarglength = len(sys.argv)
-print(sysarglength)
+
 
 
 if sys.argv[1] == str("--send"):
