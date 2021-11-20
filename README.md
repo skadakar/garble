@@ -8,7 +8,7 @@ OTP is limited to "abcdefghijklmnopqrstuvwxyz"
 PSK is limited to "abcdefghijklmnopqrstuvwxyz0123456789 ,.-!"  
 ROT is limited to "abcdefghijklmnopqrstuvwxyz0123456789"  
 
-Also supports --autoplaylist which will run a random commands found in /config/playlist.txt every random intervals between 3 and 21 minutes until manually shut down.
+Autoplaylist: Will run a random command from /config/playlist.txt at a random interval between 3-21 minutes. 
 
 Not true random, cannot be trusted for anything outside of fun and games. 
 
@@ -22,6 +22,9 @@ Not true random, cannot be trusted for anything outside of fun and games.
 ```
 ```
 --send "thistext"  --rot <number> --prefix "prefix numbers"  
+```
+```
+--autoplaylist
 ```
   
 ## To generate new keys use keygen, note that this will overwrite existing keys defined in the config folder.  
