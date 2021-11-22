@@ -363,10 +363,9 @@ def autoplaylist():
         thiswait = (random.sample(waittime, 1))
         nexttask = (random.sample(options, 1))
         commandcall = commands[nexttask[0]]
-        print("Waiting for " + str(thiswait[0]) + " minutes before doing:")
-        print(commandcall)
-        time.sleep(thiswait[0] * 60)
         subprocess.call(commandcall)
+        print("Waiting for " + str(thiswait[0]) + " before sending next")
+        time.sleep(thiswait[0] * 60)
         print("Done, starting over.")
 #tmpstr = rot(13,"hei")
 #playstring("vaz09", tmpstr)
