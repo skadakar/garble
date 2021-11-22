@@ -232,6 +232,15 @@ def rotencodechar(char,rotlevel):
     else:
         return char
 
+def vig_encrypt(key, plaintext):
+    key_length = len(key)
+    key_as_int = [ord(i) for i in key]
+    plaintext_int = [ord(i) for i in plaintext]
+    ciphertext = ''
+    for i in range(len(plaintext_int)):
+        value = (plaintext_int[i] + key_as_int[i % key_length]) % 26
+        ciphertext += chr(value + 65)
+    return ciphertext
 
 def rot(rotlevel,string):
     finalstring =""
@@ -256,7 +265,30 @@ prefix=None
 # send_otp_message
 # send_psk_message
 
-def send_otp_message(message, otp_key, prefix):
+
+def send_vig_message(message, vigkey, prefix):
+    # Play intro
+    play("audio", "vigintro")
+    wait()
+    # Play prefix
+    playstring("vaz09", prefix_to_list(prefix))
+    wait()
+    # Play message
+    playstring("vaz09", vig_encrypt(vigkey, message))
+    wait()
+    # Play pause music
+    play("audio", "vigmid")
+    # Re-play prefix
+    playstring("vaz09", prefix_to_list(prefix))
+    wait()
+    # Re-play message
+    playstring("vaz09", vig_encrypt(vigkey, message))
+    # Play exit
+    play("audio", "vigend")
+    return
+
+
+def send_otp_message(message, otp_key, prefix="_"):
     # Play intro
     play("audio", "otpintro")
     wait()
@@ -298,6 +330,7 @@ def send_psk_message(message,psk_key, prefix="_"):
     # Play exit
     play("audio", "pskend")
     return
+
 
 def send_rot_message(message,rot_num, prefix="_"):
     # Play intro
@@ -341,31 +374,40 @@ def autoplaylist():
 sysarglength = len(sys.argv)
 
 
-
 if sys.argv[1] == str("--send"):
+#VIGINER
+    if sys.argv[3] == str("--vig"):
+        if len(sys.argv) > 5:
+            send_vig_message(sys.argv[2], sys.argv[4], sys.argv[6])
+            exit(0)
+        else:
+            send_vig_message(sys.argv[2], sys.argv[4], "_")
+            exit(0)
+#ROTX
     if sys.argv[3] == str("--rot"):
         if len(sys.argv) > 5:
-            print(len(sys.argv))
             send_rot_message(sys.argv[2], sys.argv[4], sys.argv[6])
             exit(0)
         else:
-            send_rot_message(sys.argv[2], sys.argv[4])
+            send_rot_message(sys.argv[2], sys.argv[4], "_")
             exit(0)
+#PSK
     if sys.argv[3] == str("--psk"):
         if sys.argv[5] == str("--prefix"):
             send_psk_message(sys.argv[2], sys.argv[4], sys.argv[6])
             exit(0)
         else:
-            send_psk_message(sys.argv[2], sys.argv[4])
+            send_psk_message(sys.argv[2], sys.argv[4], "_")
             exit(0)
+#OTP
     if sys.argv[3] == str("--otp"):
         if sys.argv[5] == str("--prefix"):
             send_otp_message(sys.argv[2], sys.argv[4], sys.argv[6])
             exit(0)
         else:
-            send_otp_message(sys.argv[2], sys.argv[4])
+            send_otp_message(sys.argv[2], sys.argv[4], "_")
         exit(0)
-
+#KEYGEN
 if sys.argv[1] == str("--keygen"):
     if sys.argv[2] == str("--otp"):
         rotate_otp_keys()
@@ -375,14 +417,6 @@ if sys.argv[1] == str("--keygen"):
         exit()
     exit(0)
 
-if sys.argv[1] == str("--keygen"):
-    if sys.argv[2] == str("--otp"):
-        rotate_otp_keys()
-        exit(0)
-    if sys.argv[2] == str("--psk"):
-        rotate_psk()
-        exit()
-    exit(0)
 if sys.argv[1] == str("--autoplaylist"):
     autoplaylist()
 
