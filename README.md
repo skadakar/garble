@@ -69,6 +69,13 @@ Not true random, cannot be trusted for anything outside of fun and games.
    ```
    python garble.py --send "thisismymessage" --rot 13
    ```   
+## VIG Examples: 
+  ``` 
+   python garble.py --send "thisismymessage" --vig "januar" --prefix "vig"  
+   ```
+   ```
+   python garble.py --send "thisismymessage" --vig "januar"
+   ```   
   
 ## Video examples   
    
